@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row mb-4">
+    <div class="col-12">
+        <h2 class="fw-bold">
+            <i class="fas fa-history me-2 text-success"></i>
+            Query History
+        </h2>
+        <p class="text-secondary">
+            All previous OpsCore AI queries
+        </p>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        {% if queries %}
+            {% for query in queries %}
+            <div class="card p-4 mb-3">
+                <div class="d-flex justify-content-between mb-2">
+                    <span class="badge bg-success p-2">
+                        {{ query.agent_type|upper }}
+                    </span>
+                    <small class="text-secondary">
+                        {{ query.created_at|date:"M d, Y H:i" }}
+                    </small>
+                </div>
+                <p class="fw-bold mb-2">{{ query.user_query }}</p>
+                <div class="bg-dark p-3 rounded"
+                     style="white-space: pre-wrap;
+                            font-family: monospace;
+                            font-size: 0.85rem;">
+                    {{ query.ai_response|truncatechars:300 }}
+                </div>
+            </div>
+            {% endfor %}
+        {% else %}
+            <div class="card p-5 text-center">
+                <i class="fas fa-inbox fa-3x text-secondary mb-3"></i>
+                <p class="text-secondary">
+                    No queries yet. Start chatting!
+                </p>
+                <a href="/agents/chat/" 
+                   class="btn btn-primary">
+                    Start Now
+                </a>
+            </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

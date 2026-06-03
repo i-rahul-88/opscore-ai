@@ -1,0 +1,237 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!-- Hero Section -->
+<div class="row mb-5">
+    <div class="col-12 text-center py-5">
+        <div class="mb-4">
+            <span style="background:rgba(0,212,255,0.1);
+                border:1px solid rgba(0,212,255,0.3);
+                padding:8px 20px;
+                border-radius:20px;
+                font-size:0.85rem;
+                color:#00d4ff;">
+                ⚡ Powered by Microsoft Foundry IQ
+            </span>
+        </div>
+        <h1 style="font-size:3.5rem;font-weight:800;
+            background:linear-gradient(135deg,#fff,#00d4ff,#7877c6);
+            -webkit-background-clip:text;
+            -webkit-text-fill-color:transparent;
+            line-height:1.2;" class="mb-4">
+            OpsCore AI
+        </h1>
+        <p style="font-size:1.2rem;color:#94a3b8;
+            max-width:600px;margin:0 auto 2rem;">
+            Multi-Agent DevOps Intelligence Platform.<br>
+            Resolve incidents, debug pipelines & secure 
+            infrastructure — in seconds.
+        </p>
+        <a href="/agents/chat/" class="btn btn-primary btn-lg">
+            <i class="fas fa-bolt me-2"></i>
+            Launch AI Chat
+        </a>
+    </div>
+</div>
+
+<!-- Stats Row -->
+<div class="row mb-5 text-center">
+    <div class="col-md-4 mb-3">
+        <div class="glass-card p-4">
+            <h2 style="color:#00d4ff;font-weight:800;">
+                5
+            </h2>
+            <p style="color:#94a3b8;margin:0;">
+                AI Agents
+            </p>
+        </div>
+    </div>
+    <div class="col-md-4 mb-3">
+        <div class="glass-card p-4">
+            <h2 style="color:#7877c6;font-weight:800;">
+                {{ total_queries }}
+            </h2>
+            <p style="color:#94a3b8;margin:0;">
+                Queries Resolved
+            </p>
+        </div>
+    </div>
+    <div class="col-md-4 mb-3">
+        <div class="glass-card p-4">
+            <h2 style="color:#00d4ff;font-weight:800;">
+                3
+            </h2>
+            <p style="color:#94a3b8;margin:0;">
+                Microsoft IQ Layers
+            </p>
+        </div>
+    </div>
+</div>
+
+<!-- Agent Cards -->
+<div class="row mb-5">
+    <div class="col-12 mb-4">
+        <h3 style="font-weight:700;">
+            Specialist Agents
+        </h3>
+        <p style="color:#94a3b8;">
+            Each query is automatically routed to 
+            the right expert agent
+        </p>
+    </div>
+
+    <div class="col-md-3 mb-4">
+        <div class="glass-card p-4 h-100">
+            <div style="width:50px;height:50px;
+                background:rgba(239,68,68,0.15);
+                border-radius:12px;
+                display:flex;align-items:center;
+                justify-content:center;
+                margin-bottom:16px;">
+                <i class="fas fa-fire" 
+                   style="color:#ef4444;font-size:1.3rem;">
+                </i>
+            </div>
+            <h5 style="font-weight:700;">
+                Incident Analyzer
+            </h5>
+            <p style="color:#94a3b8;font-size:0.9rem;">
+                Root cause analysis for production 
+                incidents in 30 seconds
+            </p>
+            <span style="background:rgba(239,68,68,0.15);
+                color:#ef4444;padding:4px 12px;
+                border-radius:20px;font-size:0.75rem;">
+                SRE Agent
+            </span>
+        </div>
+    </div>
+
+    <div class="col-md-3 mb-4">
+        <div class="glass-card p-4 h-100">
+            <div style="width:50px;height:50px;
+                background:rgba(234,179,8,0.15);
+                border-radius:12px;
+                display:flex;align-items:center;
+                justify-content:center;
+                margin-bottom:16px;">
+                <i class="fas fa-code-branch"
+                   style="color:#eab308;font-size:1.3rem;">
+                </i>
+            </div>
+            <h5 style="font-weight:700;">
+                CI/CD Debugger
+            </h5>
+            <p style="color:#94a3b8;font-size:0.9rem;">
+                Debug pipeline failures and optimize 
+                your deployments instantly
+            </p>
+            <span style="background:rgba(234,179,8,0.15);
+                color:#eab308;padding:4px 12px;
+                border-radius:20px;font-size:0.75rem;">
+                DevOps Agent
+            </span>
+        </div>
+    </div>
+
+    <div class="col-md-3 mb-4">
+        <div class="glass-card p-4 h-100">
+            <div style="width:50px;height:50px;
+                background:rgba(0,212,255,0.15);
+                border-radius:12px;
+                display:flex;align-items:center;
+                justify-content:center;
+                margin-bottom:16px;">
+                <i class="fas fa-shield-alt"
+                   style="color:#00d4ff;font-size:1.3rem;">
+                </i>
+            </div>
+            <h5 style="font-weight:700;">
+                Security Scanner
+            </h5>
+            <p style="color:#94a3b8;font-size:0.9rem;">
+                Detect vulnerabilities in code 
+                and configs with CVE details
+            </p>
+            <span style="background:rgba(0,212,255,0.15);
+                color:#00d4ff;padding:4px 12px;
+                border-radius:20px;font-size:0.75rem;">
+                SecOps Agent
+            </span>
+        </div>
+    </div>
+
+    <div class="col-md-3 mb-4">
+        <div class="glass-card p-4 h-100">
+            <div style="width:50px;height:50px;
+                background:rgba(120,119,198,0.15);
+                border-radius:12px;
+                display:flex;align-items:center;
+                justify-content:center;
+                margin-bottom:16px;">
+                <i class="fas fa-book"
+                   style="color:#7877c6;font-size:1.3rem;">
+                </i>
+            </div>
+            <h5 style="font-weight:700;">
+                Runbook Generator
+            </h5>
+            <p style="color:#94a3b8;font-size:0.9rem;">
+                Auto-generate professional runbooks 
+                and procedures instantly
+            </p>
+            <span style="background:rgba(120,119,198,0.15);
+                color:#7877c6;padding:4px 12px;
+                border-radius:20px;font-size:0.75rem;">
+                Docs Agent
+            </span>
+        </div>
+    </div>
+</div>
+
+<!-- Recent Queries -->
+<div class="row">
+    <div class="col-12">
+        <div class="glass-card p-4">
+            <h5 style="font-weight:700;margin-bottom:20px;">
+                <i class="fas fa-history me-2"
+                   style="color:#00d4ff;"></i>
+                Recent Queries
+            </h5>
+            {% if recent_queries %}
+                {% for query in recent_queries %}
+                <div style="border-bottom:1px solid 
+                    rgba(255,255,255,0.05);
+                    padding:12px 0;">
+                    <span style="background:rgba(0,212,255,0.1);
+                        color:#00d4ff;
+                        padding:3px 10px;
+                        border-radius:20px;
+                        font-size:0.75rem;
+                        margin-right:10px;">
+                        {{ query.agent_type|upper }}
+                    </span>
+                    <span style="color:#94a3b8;font-size:0.9rem;">
+                        {{ query.user_query|truncatechars:80 }}
+                    </span>
+                </div>
+                {% endfor %}
+            {% else %}
+                <div class="text-center py-4">
+                    <i class="fas fa-robot fa-2x mb-3"
+                       style="color:#94a3b8;"></i>
+                    <p style="color:#94a3b8;">
+                        No queries yet. Start chatting!
+                    </p>
+                    <a href="/agents/chat/" 
+                       class="btn btn-primary">
+                        Start Now
+                    </a>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}
