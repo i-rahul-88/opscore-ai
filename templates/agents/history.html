@@ -1,52 +1,147 @@
 {% extends 'base.html' %}
 
 {% block content %}
+
+<!-- Header -->
 <div class="row mb-4">
-    <div class="col-12">
-        <h2 class="fw-bold">
-            <i class="fas fa-history me-2 text-success"></i>
+    <div class="col-md-8">
+        <h2 style="font-size:2rem;
+            font-weight:800;color:#0f172a;">
+            <i class="fas fa-history me-2"
+               style="color:#6366f1;"></i>
             Query History
         </h2>
-        <p class="text-secondary">
-            All previous OpsCore AI queries
+        <p style="color:#64748b;">
+            All previous OpsCore AI analysis records
         </p>
+    </div>
+    <div class="col-md-4 text-md-end">
+        <a href="/agents/chat/"
+           class="btn-pro text-decoration-none">
+            <i class="fas fa-plus me-2"></i>
+            New Query
+        </a>
     </div>
 </div>
 
+<!-- History List -->
 <div class="row">
     <div class="col-12">
         {% if queries %}
             {% for query in queries %}
-            <div class="card p-4 mb-3">
-                <div class="d-flex justify-content-between mb-2">
-                    <span class="badge bg-success p-2">
+            <div class="pro-card p-4 mb-3">
+                <div class="d-flex justify-content-between
+                    align-items-center mb-3">
+                    <div class="d-flex 
+                        align-items-center gap-3">
+
+                        {% if query.agent_type == 'incident' %}
+                        <div style="width:40px;height:40px;
+                            background:#fef2f2;
+                            border-radius:10px;
+                            display:flex;align-items:center;
+                            justify-content:center;">
+                            <i class="fas fa-fire"
+                               style="color:#ef4444;"></i>
+                        </div>
+                        {% elif query.agent_type == 'cicd' %}
+                        <div style="width:40px;height:40px;
+                            background:#fefce8;
+                            border-radius:10px;
+                            display:flex;align-items:center;
+                            justify-content:center;">
+                            <i class="fas fa-code-branch"
+                               style="color:#eab308;"></i>
+                        </div>
+                        {% elif query.agent_type == 'security' %}
+                        <div style="width:40px;height:40px;
+                            background:#eff6ff;
+                            border-radius:10px;
+                            display:flex;align-items:center;
+                            justify-content:center;">
+                            <i class="fas fa-shield-alt"
+                               style="color:#3b82f6;"></i>
+                        </div>
+                        {% else %}
+                        <div style="width:40px;height:40px;
+                            background:#f5f3ff;
+                            border-radius:10px;
+                            display:flex;align-items:center;
+                            justify-content:center;">
+                            <i class="fas fa-book"
+                               style="color:#6366f1;"></i>
+                        </div>
+                        {% endif %}
+
+                        <div>
+                            <span style="font-weight:700;
+                                color:#0f172a;
+                                font-size:0.95rem;">
+                                {{ query.agent_type|upper }} 
+                                Analysis
+                            </span>
+                            <p style="color:#94a3b8;
+                                margin:0;font-size:0.8rem;">
+                                {{ query.created_at|date:"M d, Y — H:i" }}
+                            </p>
+                        </div>
+                    </div>
+
+                    <span style="background:#f5f3ff;
+                        color:#6366f1;
+                        padding:5px 14px;
+                        border-radius:20px;
+                        font-size:0.78rem;
+                        font-weight:600;">
                         {{ query.agent_type|upper }}
                     </span>
-                    <small class="text-secondary">
-                        {{ query.created_at|date:"M d, Y H:i" }}
-                    </small>
                 </div>
-                <p class="fw-bold mb-2">{{ query.user_query }}</p>
-                <div class="bg-dark p-3 rounded"
-                     style="white-space: pre-wrap;
-                            font-family: monospace;
-                            font-size: 0.85rem;">
-                    {{ query.ai_response|truncatechars:300 }}
+
+                <!-- Query -->
+                <div style="background:#f8fafc;
+                    border-radius:10px;
+                    padding:12px 16px;
+                    margin-bottom:12px;
+                    border-left:3px solid #6366f1;">
+                    <p style="color:#475569;
+                        font-size:0.9rem;
+                        margin:0;font-weight:500;">
+                        {{ query.user_query }}
+                    </p>
+                </div>
+
+                <!-- Response Preview -->
+                <div style="background:#0f172a;
+                    border-radius:10px;
+                    padding:14px 16px;">
+                    <p style="color:#a8d8a8;
+                        font-family:monospace;
+                        font-size:0.82rem;
+                        margin:0;line-height:1.6;">
+                        {{ query.ai_response|truncatechars:200 }}
+                    </p>
                 </div>
             </div>
             {% endfor %}
+
         {% else %}
-            <div class="card p-5 text-center">
-                <i class="fas fa-inbox fa-3x text-secondary mb-3"></i>
-                <p class="text-secondary">
-                    No queries yet. Start chatting!
+            <div class="pro-card p-5 text-center">
+                <i class="fas fa-inbox fa-3x mb-3"
+                   style="color:#e2e8f0;"></i>
+                <h5 style="color:#0f172a;
+                    font-weight:700;">
+                    No Queries Yet
+                </h5>
+                <p style="color:#94a3b8;">
+                    Start analyzing DevOps problems!
                 </p>
-                <a href="/agents/chat/" 
-                   class="btn btn-primary">
-                    Start Now
+                <a href="/agents/chat/"
+                   class="btn-pro text-decoration-none">
+                    Start Now →
                 </a>
             </div>
         {% endif %}
     </div>
 </div>
+
 {% endblock %}
