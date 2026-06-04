@@ -1,0 +1,235 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!-- Header -->
+<div class="row mb-4">
+    <div class="col-12">
+        <h2 style="font-size:2rem;
+            font-weight:800;color:#0f172a;">
+            <i class="fas fa-chart-bar me-2"
+               style="color:#6366f1;"></i>
+            Analytics Dashboard
+        </h2>
+        <p style="color:#64748b;">
+            Real-time insights powered by 
+            Microsoft Fabric IQ
+        </p>
+    </div>
+</div>
+
+<!-- Stats Cards -->
+<div class="row mb-4">
+    <div class="col-md-3 mb-3">
+        <div class="pro-card p-4 text-center">
+            <div style="width:50px;height:50px;
+                background:#f5f3ff;
+                border-radius:12px;
+                display:flex;align-items:center;
+                justify-content:center;
+                margin:0 auto 12px;">
+                <i class="fas fa-robot"
+                   style="color:#6366f1;
+                   font-size:1.2rem;"></i>
+            </div>
+            <h2 style="font-size:2.5rem;
+                font-weight:800;color:#6366f1;">
+                {{ total }}
+            </h2>
+            <p style="color:#64748b;
+                font-weight:500;margin:0;">
+                Total Queries
+            </p>
+        </div>
+    </div>
+    <div class="col-md-3 mb-3">
+        <div class="pro-card p-4 text-center">
+            <div style="width:50px;height:50px;
+                background:#fef2f2;
+                border-radius:12px;
+                display:flex;align-items:center;
+                justify-content:center;
+                margin:0 auto 12px;">
+                <i class="fas fa-fire"
+                   style="color:#ef4444;
+                   font-size:1.2rem;"></i>
+            </div>
+            <h2 style="font-size:2.5rem;
+                font-weight:800;color:#ef4444;">
+                {{ incident }}
+            </h2>
+            <p style="color:#64748b;
+                font-weight:500;margin:0;">
+                Incidents Analyzed
+            </p>
+        </div>
+    </div>
+    <div class="col-md-3 mb-3">
+        <div class="pro-card p-4 text-center">
+            <div style="width:50px;height:50px;
+                background:#fefce8;
+                border-radius:12px;
+                display:flex;align-items:center;
+                justify-content:center;
+                margin:0 auto 12px;">
+                <i class="fas fa-code-branch"
+                   style="color:#eab308;
+                   font-size:1.2rem;"></i>
+            </div>
+            <h2 style="font-size:2.5rem;
+                font-weight:800;color:#eab308;">
+                {{ cicd }}
+            </h2>
+            <p style="color:#64748b;
+                font-weight:500;margin:0;">
+                Pipelines Debugged
+            </p>
+        </div>
+    </div>
+    <div class="col-md-3 mb-3">
+        <div class="pro-card p-4 text-center">
+            <div style="width:50px;height:50px;
+                background:#eff6ff;
+                border-radius:12px;
+                display:flex;align-items:center;
+                justify-content:center;
+                margin:0 auto 12px;">
+                <i class="fas fa-shield-alt"
+                   style="color:#3b82f6;
+                   font-size:1.2rem;"></i>
+            </div>
+            <h2 style="font-size:2.5rem;
+                font-weight:800;color:#3b82f6;">
+                {{ security }}
+            </h2>
+            <p style="color:#64748b;
+                font-weight:500;margin:0;">
+                Security Scans
+            </p>
+        </div>
+    </div>
+</div>
+
+<!-- Chart + Recent -->
+<div class="row">
+    <!-- Chart -->
+    <div class="col-md-6 mb-4">
+        <div class="pro-card p-4">
+            <h5 style="font-weight:700;
+                color:#0f172a;margin-bottom:20px;">
+                Agent Usage Breakdown
+            </h5>
+            <canvas id="agentChart"></canvas>
+        </div>
+    </div>
+
+    <!-- Recent Queries -->
+    <div class="col-md-6 mb-4">
+        <div class="pro-card p-4">
+            <h5 style="font-weight:700;
+                color:#0f172a;margin-bottom:20px;">
+                Recent Activity
+            </h5>
+            {% if recent %}
+                {% for query in recent %}
+                <div style="display:flex;
+                    align-items:center;
+                    gap:12px;
+                    padding:10px 0;
+                    border-bottom:1px solid #f1f5f9;">
+                    <span style="background:#f5f3ff;
+                        color:#6366f1;
+                        padding:3px 10px;
+                        border-radius:20px;
+                        font-size:0.72rem;
+                        font-weight:700;
+                        white-space:nowrap;">
+                        {{ query.agent_type|upper }}
+                    </span>
+                    <span style="color:#64748b;
+                        font-size:0.85rem;">
+                        {{ query.user_query|truncatechars:50 }}
+                    </span>
+                </div>
+                {% endfor %}
+            {% else %}
+                <div class="text-center py-4">
+                    <p style="color:#94a3b8;">
+                        No activity yet!
+                    </p>
+                    <a href="/agents/chat/"
+                       class="btn-pro 
+                       text-decoration-none">
+                        Start Chatting
+                    </a>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<!-- Microsoft Fabric IQ Badge -->
+<div class="row">
+    <div class="col-12">
+        <div class="pro-card p-4 text-center"
+             style="background:linear-gradient(
+                135deg,#f5f3ff,#eff6ff);">
+            <i class="fas fa-database me-2"
+               style="color:#6366f1;"></i>
+            <span style="font-weight:600;
+                color:#0f172a;">
+                Analytics powered by 
+                Microsoft Fabric IQ
+            </span>
+            <span style="background:#6366f1;
+                color:white;
+                padding:4px 12px;
+                border-radius:20px;
+                font-size:0.78rem;
+                font-weight:600;
+                margin-left:12px;">
+                Fabric IQ
+            </span>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+const ctx = document.getElementById(
+    'agentChart').getContext('2d');
+new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+        labels: [
+            'Incident', 'CI/CD', 
+            'Security', 'Runbook'
+        ],
+        datasets: [{
+            data: [
+                {{ incident }}, 
+                {{ cicd }}, 
+                {{ security }}, 
+                {{ runbook }}
+            ],
+            backgroundColor: [
+                '#ef4444',
+                '#eab308', 
+                '#3b82f6',
+                '#6366f1'
+            ],
+            borderWidth: 0
+        }]
+    },
+    options: {
+        responsive: true,
+        plugins: {
+            legend: {
+                position: 'bottom'
+            }
+        }
+    }
+});
+</script>
+
+{% endblock %}
