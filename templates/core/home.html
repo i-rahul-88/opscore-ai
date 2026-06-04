@@ -2,231 +2,342 @@
 
 {% block content %}
 
-<!-- Hero Section -->
-<div class="row mb-5">
-    <div class="col-12 text-center py-5">
-        <div class="mb-4">
-            <span style="background:rgba(0,212,255,0.1);
-                border:1px solid rgba(0,212,255,0.3);
-                padding:8px 20px;
+<!-- HERO SECTION -->
+<div class="row align-items-center mb-5 py-4">
+    <div class="col-md-6">
+        <div class="mb-3">
+            <span style="background:#ede9fe;
+                color:#6366f1;
+                padding:6px 16px;
                 border-radius:20px;
-                font-size:0.85rem;
-                color:#00d4ff;">
-                ⚡ Powered by Microsoft Foundry IQ
+                font-size:0.82rem;
+                font-weight:600;">
+                ⚡ Microsoft Foundry IQ Powered
             </span>
         </div>
-        <h1 style="font-size:3.5rem;font-weight:800;
-            background:linear-gradient(135deg,#fff,#00d4ff,#7877c6);
-            -webkit-background-clip:text;
-            -webkit-text-fill-color:transparent;
-            line-height:1.2;" class="mb-4">
-            OpsCore AI
+        <h1 style="font-size:3.2rem;
+            font-weight:800;
+            color:#0f172a;
+            line-height:1.15;
+            letter-spacing:-1px;"
+            class="mb-4">
+            DevOps Intelligence<br>
+            <span style="color:#6366f1;">
+                Powered by AI
+            </span>
         </h1>
-        <p style="font-size:1.2rem;color:#94a3b8;
-            max-width:600px;margin:0 auto 2rem;">
-            Multi-Agent DevOps Intelligence Platform.<br>
-            Resolve incidents, debug pipelines & secure 
-            infrastructure — in seconds.
+        <p style="font-size:1.1rem;
+            color:#64748b;
+            line-height:1.7;
+            max-width:480px;"
+            class="mb-4">
+            Resolve incidents, debug pipelines, scan 
+            security vulnerabilities and generate 
+            runbooks — all in plain English, 
+            in seconds.
         </p>
-        <a href="/agents/chat/" class="btn btn-primary btn-lg">
-            <i class="fas fa-bolt me-2"></i>
-            Launch AI Chat
-        </a>
+        <div class="d-flex gap-3">
+            <a href="/agents/chat/" 
+               class="btn-pro text-decoration-none">
+                <i class="fas fa-bolt me-2"></i>
+                Start for Free
+            </a>
+            <a href="/agents/history/"
+               style="background:#f1f5f9;
+                color:#475569;
+                border:none;
+                border-radius:10px;
+                padding:12px 28px;
+                font-weight:600;
+                font-size:0.95rem;
+                text-decoration:none;
+                transition:all 0.2s;"
+               class="d-flex align-items-center">
+                View History →
+            </a>
+        </div>
+    </div>
+    <div class="col-md-6 mt-5 mt-md-0">
+        <div class="pro-card p-4"
+             style="background:linear-gradient(
+                135deg,#0f172a,#1e1b4b);">
+            <div class="d-flex align-items-center 
+                gap-2 mb-3">
+                <div style="width:12px;height:12px;
+                    background:#ef4444;
+                    border-radius:50%;"></div>
+                <div style="width:12px;height:12px;
+                    background:#eab308;
+                    border-radius:50%;"></div>
+                <div style="width:12px;height:12px;
+                    background:#22c55e;
+                    border-radius:50%;"></div>
+                <span style="color:#475569;
+                    font-size:0.8rem;
+                    margin-left:8px;">
+                    OpsCore AI Terminal
+                </span>
+            </div>
+            <div style="font-family:monospace;
+                font-size:0.85rem;line-height:2;">
+                <p style="color:#64748b;margin:0;">
+                    $ opscore analyze --incident
+                </p>
+                <p style="color:#a8d8a8;margin:0;">
+                    ✓ Router Agent activated
+                </p>
+                <p style="color:#a8d8a8;margin:0;">
+                    ✓ Incident detected → Agent routed
+                </p>
+                <p style="color:#a8d8a8;margin:0;">
+                    ✓ Root cause identified
+                </p>
+                <p style="color:#818cf8;margin:0;">
+                    → Fix: Restart service + increase memory
+                </p>
+                <p style="color:#64748b;margin:0;">
+                    ✓ Runbook generated in 2.3s
+                </p>
+            </div>
+        </div>
     </div>
 </div>
 
-<!-- Stats Row -->
-<div class="row mb-5 text-center">
+<!-- STATS -->
+<div class="row mb-5">
     <div class="col-md-4 mb-3">
-        <div class="glass-card p-4">
-            <h2 style="color:#00d4ff;font-weight:800;">
+        <div class="pro-card p-4 text-center">
+            <h2 style="font-size:2.5rem;
+                font-weight:800;color:#6366f1;">
                 5
             </h2>
-            <p style="color:#94a3b8;margin:0;">
-                AI Agents
+            <p style="color:#64748b;
+                font-weight:500;margin:0;">
+                Specialist AI Agents
             </p>
         </div>
     </div>
     <div class="col-md-4 mb-3">
-        <div class="glass-card p-4">
-            <h2 style="color:#7877c6;font-weight:800;">
+        <div class="pro-card p-4 text-center">
+            <h2 style="font-size:2.5rem;
+                font-weight:800;color:#6366f1;">
                 {{ total_queries }}
             </h2>
-            <p style="color:#94a3b8;margin:0;">
-                Queries Resolved
+            <p style="color:#64748b;
+                font-weight:500;margin:0;">
+                Problems Resolved
             </p>
         </div>
     </div>
     <div class="col-md-4 mb-3">
-        <div class="glass-card p-4">
-            <h2 style="color:#00d4ff;font-weight:800;">
+        <div class="pro-card p-4 text-center">
+            <h2 style="font-size:2.5rem;
+                font-weight:800;color:#6366f1;">
                 3
             </h2>
-            <p style="color:#94a3b8;margin:0;">
+            <p style="color:#64748b;
+                font-weight:500;margin:0;">
                 Microsoft IQ Layers
             </p>
         </div>
     </div>
 </div>
 
-<!-- Agent Cards -->
+<!-- AGENTS SECTION -->
 <div class="row mb-5">
     <div class="col-12 mb-4">
-        <h3 style="font-weight:700;">
+        <h2 style="font-size:2rem;
+            font-weight:800;color:#0f172a;">
             Specialist Agents
-        </h3>
-        <p style="color:#94a3b8;">
-            Each query is automatically routed to 
-            the right expert agent
+        </h2>
+        <p style="color:#64748b;">
+            Every query automatically routed 
+            to the right expert
         </p>
     </div>
 
     <div class="col-md-3 mb-4">
-        <div class="glass-card p-4 h-100">
-            <div style="width:50px;height:50px;
-                background:rgba(239,68,68,0.15);
+        <div class="pro-card p-4 h-100">
+            <div style="width:48px;height:48px;
+                background:#fef2f2;
                 border-radius:12px;
                 display:flex;align-items:center;
                 justify-content:center;
                 margin-bottom:16px;">
-                <i class="fas fa-fire" 
-                   style="color:#ef4444;font-size:1.3rem;">
-                </i>
+                <i class="fas fa-fire"
+                   style="color:#ef4444;
+                   font-size:1.2rem;"></i>
             </div>
-            <h5 style="font-weight:700;">
+            <h5 style="font-weight:700;
+                color:#0f172a;">
                 Incident Analyzer
             </h5>
-            <p style="color:#94a3b8;font-size:0.9rem;">
+            <p style="color:#64748b;
+                font-size:0.9rem;line-height:1.6;">
                 Root cause analysis for production 
                 incidents in 30 seconds
             </p>
-            <span style="background:rgba(239,68,68,0.15);
-                color:#ef4444;padding:4px 12px;
-                border-radius:20px;font-size:0.75rem;">
+            <span style="background:#fef2f2;
+                color:#ef4444;
+                padding:4px 12px;
+                border-radius:20px;
+                font-size:0.75rem;
+                font-weight:600;">
                 SRE Agent
             </span>
         </div>
     </div>
 
     <div class="col-md-3 mb-4">
-        <div class="glass-card p-4 h-100">
-            <div style="width:50px;height:50px;
-                background:rgba(234,179,8,0.15);
+        <div class="pro-card p-4 h-100">
+            <div style="width:48px;height:48px;
+                background:#fefce8;
                 border-radius:12px;
                 display:flex;align-items:center;
                 justify-content:center;
                 margin-bottom:16px;">
                 <i class="fas fa-code-branch"
-                   style="color:#eab308;font-size:1.3rem;">
-                </i>
+                   style="color:#eab308;
+                   font-size:1.2rem;"></i>
             </div>
-            <h5 style="font-weight:700;">
+            <h5 style="font-weight:700;
+                color:#0f172a;">
                 CI/CD Debugger
             </h5>
-            <p style="color:#94a3b8;font-size:0.9rem;">
+            <p style="color:#64748b;
+                font-size:0.9rem;line-height:1.6;">
                 Debug pipeline failures and optimize 
-                your deployments instantly
+                deployments instantly
             </p>
-            <span style="background:rgba(234,179,8,0.15);
-                color:#eab308;padding:4px 12px;
-                border-radius:20px;font-size:0.75rem;">
+            <span style="background:#fefce8;
+                color:#ca8a04;
+                padding:4px 12px;
+                border-radius:20px;
+                font-size:0.75rem;
+                font-weight:600;">
                 DevOps Agent
             </span>
         </div>
     </div>
 
     <div class="col-md-3 mb-4">
-        <div class="glass-card p-4 h-100">
-            <div style="width:50px;height:50px;
-                background:rgba(0,212,255,0.15);
+        <div class="pro-card p-4 h-100">
+            <div style="width:48px;height:48px;
+                background:#eff6ff;
                 border-radius:12px;
                 display:flex;align-items:center;
                 justify-content:center;
                 margin-bottom:16px;">
                 <i class="fas fa-shield-alt"
-                   style="color:#00d4ff;font-size:1.3rem;">
-                </i>
+                   style="color:#3b82f6;
+                   font-size:1.2rem;"></i>
             </div>
-            <h5 style="font-weight:700;">
+            <h5 style="font-weight:700;
+                color:#0f172a;">
                 Security Scanner
             </h5>
-            <p style="color:#94a3b8;font-size:0.9rem;">
+            <p style="color:#64748b;
+                font-size:0.9rem;line-height:1.6;">
                 Detect vulnerabilities in code 
                 and configs with CVE details
             </p>
-            <span style="background:rgba(0,212,255,0.15);
-                color:#00d4ff;padding:4px 12px;
-                border-radius:20px;font-size:0.75rem;">
+            <span style="background:#eff6ff;
+                color:#3b82f6;
+                padding:4px 12px;
+                border-radius:20px;
+                font-size:0.75rem;
+                font-weight:600;">
                 SecOps Agent
             </span>
         </div>
     </div>
 
     <div class="col-md-3 mb-4">
-        <div class="glass-card p-4 h-100">
-            <div style="width:50px;height:50px;
-                background:rgba(120,119,198,0.15);
+        <div class="pro-card p-4 h-100">
+            <div style="width:48px;height:48px;
+                background:#f5f3ff;
                 border-radius:12px;
                 display:flex;align-items:center;
                 justify-content:center;
                 margin-bottom:16px;">
                 <i class="fas fa-book"
-                   style="color:#7877c6;font-size:1.3rem;">
-                </i>
+                   style="color:#6366f1;
+                   font-size:1.2rem;"></i>
             </div>
-            <h5 style="font-weight:700;">
+            <h5 style="font-weight:700;
+                color:#0f172a;">
                 Runbook Generator
             </h5>
-            <p style="color:#94a3b8;font-size:0.9rem;">
+            <p style="color:#64748b;
+                font-size:0.9rem;line-height:1.6;">
                 Auto-generate professional runbooks 
                 and procedures instantly
             </p>
-            <span style="background:rgba(120,119,198,0.15);
-                color:#7877c6;padding:4px 12px;
-                border-radius:20px;font-size:0.75rem;">
+            <span style="background:#f5f3ff;
+                color:#6366f1;
+                padding:4px 12px;
+                border-radius:20px;
+                font-size:0.75rem;
+                font-weight:600;">
                 Docs Agent
             </span>
         </div>
     </div>
 </div>
 
-<!-- Recent Queries -->
+<!-- RECENT QUERIES -->
 <div class="row">
     <div class="col-12">
-        <div class="glass-card p-4">
-            <h5 style="font-weight:700;margin-bottom:20px;">
-                <i class="fas fa-history me-2"
-                   style="color:#00d4ff;"></i>
-                Recent Queries
-            </h5>
+        <div class="pro-card p-4">
+            <div class="d-flex justify-content-between 
+                align-items-center mb-4">
+                <h5 style="font-weight:700;
+                    color:#0f172a;margin:0;">
+                    Recent Queries
+                </h5>
+                <a href="/agents/history/"
+                   style="color:#6366f1;
+                   font-size:0.9rem;
+                   font-weight:600;
+                   text-decoration:none;">
+                    View all →
+                </a>
+            </div>
             {% if recent_queries %}
                 {% for query in recent_queries %}
-                <div style="border-bottom:1px solid 
-                    rgba(255,255,255,0.05);
-                    padding:12px 0;">
-                    <span style="background:rgba(0,212,255,0.1);
-                        color:#00d4ff;
-                        padding:3px 10px;
+                <div style="border-bottom:1px solid #f1f5f9;
+                    padding:12px 0;
+                    display:flex;
+                    align-items:center;
+                    gap:12px;">
+                    <span style="background:#f5f3ff;
+                        color:#6366f1;
+                        padding:4px 12px;
                         border-radius:20px;
                         font-size:0.75rem;
-                        margin-right:10px;">
+                        font-weight:600;
+                        white-space:nowrap;">
                         {{ query.agent_type|upper }}
                     </span>
-                    <span style="color:#94a3b8;font-size:0.9rem;">
+                    <span style="color:#64748b;
+                        font-size:0.9rem;">
                         {{ query.user_query|truncatechars:80 }}
                     </span>
                 </div>
                 {% endfor %}
             {% else %}
-                <div class="text-center py-4">
-                    <i class="fas fa-robot fa-2x mb-3"
-                       style="color:#94a3b8;"></i>
-                    <p style="color:#94a3b8;">
-                        No queries yet. Start chatting!
+                <div class="text-center py-5">
+                    <i class="fas fa-robot fa-3x mb-3"
+                       style="color:#e2e8f0;"></i>
+                    <p style="color:#94a3b8;margin:0;">
+                        No queries yet — 
+                        start by describing a problem!
                     </p>
-                    <a href="/agents/chat/" 
-                       class="btn btn-primary">
-                        Start Now
+                    <a href="/agents/chat/"
+                       class="btn-pro mt-3 
+                       text-decoration-none
+                       d-inline-block">
+                        Start Now →
                     </a>
                 </div>
             {% endif %}
