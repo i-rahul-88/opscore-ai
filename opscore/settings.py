@@ -1,13 +1,16 @@
 from pathlib import Path
 import os
 from dotenv import load_dotenv
+import dj_database_url
 
 load_dotenv()
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = os.getenv('SECRET_KEY')
-DEBUG = True
+SECRET_KEY = os.getenv('SECRET_KEY', 
+    'django-insecure-opscore-key-2026')
+
+DEBUG = os.getenv('DEBUG', 'False') == 'True'
 
 ALLOWED_HOSTS = ['*']
 
@@ -25,6 +28,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -52,14 +56,17 @@ TEMPLATES = [
 ]
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    'default': dj_database_url.config(
+        default=f'sqlite:///{BASE_DIR}/db.sqlite3'
+    )
 }
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [BASE_DIR / 'static']
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATICFILES_STORAGE = (
+    'whitenoise.storage.CompressedManifestStaticFilesStorage'
+)
 
 GITHUB_TOKEN = os.getenv('GITHUB_TOKEN')
 GITHUB_MODEL = os.getenv('GITHUB_MODEL')
